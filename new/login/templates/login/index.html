@@ -1,0 +1,17 @@
+{% extends "login/layout.html" %}
+
+{% block body %}
+    <body>
+        <h1>Login page</h1>
+        <ul>
+            {% for user in User%}
+                <li>{{ user }}</li>
+            {% endfor %}
+            </ul>
+        <a href="{% url 'register' %}">Add a new user</a>
+        {% if user.is_authenticated %}
+                    <p>You are currently signed in</p>
+                {% else %}
+                <a href="{% url 'login' %}">Click here to login</a>
+                {% endif %}
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "login/layout.html" %}
+
+{% block body %}
+<form action="{% url 'add_listing' %}" method="post">
+    {% csrf_token %}
+    <div class="form-group">
+        <input autofocus class="form-control" type="text" name="owner" placeholder="Owner">
+    </div>
+    <div class="form-group">
+        <input autofocus class="form-control" type="text" name="title" placeholder="Title">
+    </div>
+    <div class="form-group">
+        <input autofocus class="form-control" type="text" name="description" placeholder="Description">
+    </div>
+    <input type="submit" value="Submit">
+</form>
+    <ul>
+        {% for list in listings %}
+        <div class="card" style="width: 20rem;">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+                <h4 class="card-title">{{ list}}</h4>
+              <h5 class="card-title">{{ list.title }}</h5>
+              <p class="card-text">{{ list.description }}</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+        {% endfor %}
+    </ul>
+
+
+
+{% endblock %}
